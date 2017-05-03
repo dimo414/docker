@@ -1,8 +1,7 @@
 # This image enables testing of both ProfileGem and custom gems.
-# Invoke pgem_test.sh with no arguments and ProfileGem's key features will be
-# executed. Additional gems can be passed as arguments (as local directories or
-# remote repositories) to include those gems in the test suite. See
-# pgem_test.sh for more details.
+#
+# /pgem_test/pgem_test.sh: Tests a ProfileGem installation
+# /pgem_test/gem_test.sh:  Tests one or more gems (passed as arguments)
 
 FROM dimo414/ci
 
@@ -22,14 +21,13 @@ RUN \
   ./bash -version \
 ENV BASH_3 /bash/bash-3.2.57/bash
 
-COPY pgem_test.sh /usr/local/bin
 ENV PGEM_TEST='/pgem_test'
 RUN mkdir $PGEM_TEST
+COPY *.sh /pgem_test/
 
 ENV _PGEM_DEBUG true
 
 LABEL \
   version="0.1" \
-  description="Image for CI tests of ProfileGem gems"
+  description="Image for CI tests of ProfileGem and ProfileGem gems"
 
-ENTRYPOINT ["pgem_test.sh"]
