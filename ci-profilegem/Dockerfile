@@ -1,8 +1,3 @@
-# This image enables testing of both ProfileGem and custom gems.
-#
-# /pgem_test/pgem_test.sh: Tests a ProfileGem installation
-# /pgem_test/gem_test.sh:  Tests one or more gems (passed as arguments)
-
 FROM dimo414/ci
 
 RUN apt-get update && apt-get install -y byacc gcc make

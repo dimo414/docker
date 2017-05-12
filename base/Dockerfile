@@ -1,9 +1,3 @@
-# Base image for all Docker images in this repository.
-# This image should *only* be used by other images in this repository, and is
-# subject to breaking changes (e.g. if a command is moved into a "public"
-# sub-image). Some images may simply FROM this image and make no further
-# changes.
-
 FROM debian:testing
 
 # UTF-8 support - why is this still a thing?!
