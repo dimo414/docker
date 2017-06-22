@@ -19,10 +19,11 @@ ENV BASH_3 /bash/bash-3.2.57/bash
 ENV PGEM_TEST='/pgem_test'
 RUN mkdir $PGEM_TEST
 COPY *.sh /pgem_test/
+RUN chmod +x /pgem_test/*.sh
 
 ENV _PGEM_DEBUG true
 
 LABEL \
-  version="0.1" \
+  version="0.2" \
   description="Image for CI tests of ProfileGem and ProfileGem gems"
 
