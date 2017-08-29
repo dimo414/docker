@@ -13,6 +13,7 @@ ENV LANG en_US.UTF-8
 
 RUN apt-get update && apt-get install -y \
   ant \
+  git \
   libprotobuf-java \
   mercurial \
   # https://wiki.debian.org/Java
@@ -23,5 +24,5 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /dimo414
 
 LABEL \
-  version="0.1" \
+  version="0.2" \
   description="Base image that other images in this repo will build upon."
