@@ -1,5 +1,6 @@
 FROM dimo414/base
 
+# Lua
 RUN apt-get update && apt-get install -y \
   gcc \
   lua5.2 \
@@ -14,6 +15,16 @@ RUN apt-get update && apt-get install -y \
   luarocks install luaposix && \
   luarocks install termfx && \
   luarocks install luaunit
+
+# OCaml
+# NOTE you must currently preface every invocation with `eval $(opam config env)`
+RUN apt-get update && apt-get install -y \
+  m4 \
+  opam && \
+  opam init -y && \
+  opam switch 4.05.0 && \
+  eval $(opam config env) && \
+  opam install core menhir utop ocp-indent user-setup -y
 
 LABEL \
   version="0.1" \
