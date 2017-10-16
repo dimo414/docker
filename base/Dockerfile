@@ -11,14 +11,15 @@ RUN apt-get update && apt-get install -y locales && \
 ENV LANG en_US.UTF-8
 
 
+# Java package from https://wiki.debian.org/Java
 RUN apt-get update && apt-get install -y \
   ant \
   git \
   libprotobuf-java \
   mercurial \
-  # https://wiki.debian.org/Java
   openjdk-8-jdk \
   protobuf-compiler \
+  python3 \
   wget
 
 WORKDIR /dimo414
