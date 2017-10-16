@@ -16,11 +16,17 @@ RUN apt-get update && apt-get install -y \
   luarocks install termfx && \
   luarocks install luaunit
 
-# OCaml
-# NOTE you must currently preface every invocation with `eval $(opam config env)`
+# OCaml and TeX
+# NOTE you must currently preface every OCaml invocation with `eval $(opam config env)`
+# Consider pulling TeX packages into a separate image.
 RUN apt-get update && apt-get install -y \
   m4 \
-  opam && \
+  mathpartir \
+  opam \
+  texlive-fonts-recommended \
+  texlive-latex-base \
+  texlive-latex-extra \
+  texlive-latex-recommended && \
   opam init -y && \
   opam switch 4.05.0 && \
   eval $(opam config env) && \
