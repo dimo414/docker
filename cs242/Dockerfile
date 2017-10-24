@@ -30,7 +30,8 @@ RUN apt-get update && apt-get install -y \
   opam init -y && \
   opam switch 4.05.0 && \
   eval $(opam config env) && \
-  opam install core menhir utop ocp-indent user-setup -y
+  opam install core menhir utop ocp-indent user-setup -y &&
+  wget -O "solution.byte" "https://drive.google.com/uc?export=download&id=0B1kqaYwK09xsdTc0WnBQMEYxdXc"
 
 LABEL \
   version="0.1" \
