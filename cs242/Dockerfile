@@ -2,11 +2,11 @@ FROM dimo414/base
 
 # Lua
 RUN apt-get update && apt-get install -y \
-  gcc \
-  lua5.2 \
-  liblua5.2-dev \
-  make \
-  unzip && \
+    gcc \
+    lua5.2 \
+    liblua5.2-dev \
+    make \
+    unzip && \
   cd /tmp && \
   wget http://luarocks.github.io/luarocks/releases/luarocks-2.4.3.tar.gz && \
   tar -xf luarocks-2.4.3.tar.gz && \
@@ -16,17 +16,11 @@ RUN apt-get update && apt-get install -y \
   luarocks install termfx && \
   luarocks install luaunit
 
-# OCaml and TeX
+# OCaml
 # NOTE you must currently preface every OCaml invocation with `eval $(opam config env)`
-# Consider pulling TeX packages into a separate image.
 RUN apt-get update && apt-get install -y \
-  m4 \
-  mathpartir \
-  opam \
-  texlive-fonts-recommended \
-  texlive-latex-base \
-  texlive-latex-extra \
-  texlive-latex-recommended && \
+    m4 \
+    opam && \
   opam init -y && \
   opam switch 4.05.0 && \
   eval $(opam config env) && \
