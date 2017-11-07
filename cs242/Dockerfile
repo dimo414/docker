@@ -27,6 +27,15 @@ RUN apt-get update && apt-get install -y \
   opam install core menhir utop ocp-indent user-setup -y && \
   wget -O "solution.byte" "https://drive.google.com/uc?export=download&id=0B1kqaYwK09xsdTc0WnBQMEYxdXc"
 
+# Rust
+ENV RUSTUP_HOME=/usr/local/rustup \
+    CARGO_HOME=/usr/local/cargo \
+    PATH=/usr/local/cargo/bin:$PATH
+RUN wget https://static.rust-lang.org/rustup/dist/x86_64-unknown-linux-gnu/rustup-init -O rustup-init && \
+  chmod +x rustup-init && \
+  ./rustup-init -y --no-modify-path && \
+  rm rustup-init
+
 LABEL \
   version="0.1" \
   description="Image for CS242"
