@@ -28,6 +28,8 @@ RUN apt-get update && apt-get install -y \
   wget -O "solution.byte" "https://drive.google.com/uc?export=download&id=0B1kqaYwK09xsdTc0WnBQMEYxdXc"
 
 # Rust
+# Referenced https://github.com/rust-lang-nursery/docker-rust/blob/master/1.21.0/jessie/Dockerfile
+
 ENV RUSTUP_HOME=/usr/local/rustup \
     CARGO_HOME=/usr/local/cargo \
     PATH=/usr/local/cargo/bin:$PATH
