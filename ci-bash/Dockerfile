@@ -1,6 +1,6 @@
 FROM dimo414/ci
 
-RUN apt-get update && apt-get install -y byacc gcc make
+RUN apt-get update && apt-get install -y byacc gcc make shellcheck
 
 # Install Bash 3.2
 # http://stackoverflow.com/a/41554230/113632
@@ -17,11 +17,11 @@ RUN \
 ENV BASH_3 /bash/bash-3.2.57/bash
 
 RUN \
-  git clone https://github.com/sstephenson/bats.git /tmp/bats && \
+  git clone https://github.com/bats-core/bats-core.git /tmp/bats && \
   cd /tmp/bats && \
   ./install.sh /usr/local
 
 LABEL \
-  version="0.1" \
+  version="0.2" \
   description="Image for Bash CI tests"
 
