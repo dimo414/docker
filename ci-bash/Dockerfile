@@ -1,6 +1,6 @@
 FROM dimo414/ci
 
-RUN apt-get update && apt-get install -y byacc gcc make shellcheck
+RUN apt-get update && apt-get install -y bc byacc gcc make shellcheck
 
 # Install Bash 3.2
 # http://stackoverflow.com/a/41554230/113632
