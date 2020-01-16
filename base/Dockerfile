@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y \
   git \
   libprotobuf-java \
   mercurial \
-  openjdk-8-jdk \
+  openjdk-11-jdk \
   protobuf-compiler \
   python3 \
   wget
