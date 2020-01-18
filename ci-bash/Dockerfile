@@ -2,26 +2,18 @@ FROM dimo414/ci
 
 RUN apt-get update && apt-get install -y bc byacc gcc make shellcheck
 
-# Install Bash 3.2
-# http://stackoverflow.com/a/41554230/113632
-RUN \
-  mkdir /bash && \
-  cd /bash && \
-  wget http://ftp.gnu.org/gnu/bash/bash-3.2.57.tar.gz && \
-  tar xzf bash-3.2.57.tar.gz && \
-  rm bash-3.2.57.tar.gz && \
-  cd bash-3.2.57 && \
-  ./configure && \
-  make && \
-  ./bash -version \
-ENV BASH_3 /bash/bash-3.2.57/bash
+COPY install_bash.sh /tmp
 
 RUN \
+  bash /tmp/install_bash.sh 3.2.57 && \
+  bash /tmp/install_bash.sh 4.4.18 && \
+  bash /tmp/install_bash.sh 5.0 && \
   git clone https://github.com/bats-core/bats-core.git /tmp/bats && \
   cd /tmp/bats && \
-  ./install.sh /usr/local
+  ./install.sh /usr/local && \
+  rm -r /tmp/{bats,install_bash.sh}
 
 LABEL \
-  version="0.2" \
+  version="0.3" \
   description="Image for Bash CI tests"
 

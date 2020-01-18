@@ -4,7 +4,13 @@ This image enables testing of Bash scripts and related shell utilities.
 
 ## Features
 
-* Includes Bash 3.2.57 (in addition to the default shell which is configured in dimo414/base); the
- `BASH_3` environment variable points to the built `bash` binary
-* Adds [`bats`](https://github.com/sstephenson/bats) to the `PATH`
+* Includes stable `bash` builds at different versions
+  (in addition to the default shell which is configured in dimo414/base).
+   * `5.0` as `bash-5`
+   * `4.4.18` as `bash-4`
+   * `3.2.57` as `bash-3`
+
+  *Note: minor version numbers are subject to change*
+* [`bats`](https://github.com/bats-core/bats-core), a bash unit testing framework
+* [`shellcheck`](https://www.shellcheck.net/), a shell linter
 
