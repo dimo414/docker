@@ -11,7 +11,7 @@ RUN \
   git clone https://github.com/bats-core/bats-core.git /tmp/bats && \
   cd /tmp/bats && \
   ./install.sh /usr/local && \
-  rm -r /tmp/{bats,install_bash.sh}
+  rm -r /tmp/install_bash.sh /tmp/bats
 
 LABEL \
   version="0.3" \
