@@ -9,8 +9,10 @@ BASH_FTP_URL='http://ftpmirror.gnu.org/bash/%s.tar.gz'
 
 version=bash-${1:?version}
 cmd=${version%%.*}
-url=$(printf "$BASH_FTP_URL" "$version")
+# shellcheck disable=SC2059
+printf -v url "$BASH_FTP_URL" "$version"
 
+# TODO clean up the source and build artifacts. Do we need anything other than the bash binary?
 (
   set -x
   cd /usr/local/lib \
@@ -19,7 +21,8 @@ url=$(printf "$BASH_FTP_URL" "$version")
     && rm "${version}.tar.gz" \
     && cd "$version" \
     && ./configure && make \
-    && ln -s "$PWD/bash" "/usr/local/bin/${cmd}" \
+    && printf '#!/bin/sh\nPATH="%s:$PATH" exec %s "$@"\n' "$PWD" "$PWD/bash" > "/usr/local/bin/${cmd}" \
+    && chmod +x "/usr/local/bin/${cmd}" \
     && "${cmd}" -version
 ) || exit
 
