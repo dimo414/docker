@@ -1,11 +1,13 @@
+# hadolint ignore=DL3006
 FROM dimo414/base
 
-RUN apt-get update && apt-get install -y \
-  mathpartir \
-  texlive-fonts-recommended \
-  texlive-latex-base \
-  texlive-latex-extra \
-  texlive-latex-recommended
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    mathpartir \
+    texlive-fonts-recommended \
+    texlive-latex-base \
+    texlive-latex-extra \
+    texlive-latex-recommended && \
+  apt-get clean && rm -rf /var/lib/apt/lists/*
 
 LABEL \
   version="0.1" \

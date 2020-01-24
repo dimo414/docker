@@ -1,6 +1,7 @@
+# hadolint ignore=DL3006
 FROM dimo414/base
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     binutils \
     g++ \
     gcc \
@@ -8,7 +9,8 @@ RUN apt-get update && apt-get install -y \
     libncursesw5-dev \
     make \
     perl \
-    qemu
+    qemu && \
+  apt-get clean && rm -rf /var/lib/apt/lists/*
 
 COPY install-bochs.sh install-bochs.sh
 RUN ./install-bochs.sh

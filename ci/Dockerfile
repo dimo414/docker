@@ -1,3 +1,4 @@
+# hadolint ignore=DL3006
 FROM dimo414/base
 
 LABEL \

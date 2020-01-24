@@ -1,3 +1,4 @@
+# hadolint ignore=DL3006
 FROM dimo414/ci-bash
 
 ENV PGEM_TEST='/pgem_test'

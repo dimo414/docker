@@ -1,12 +1,15 @@
+# hadolint ignore=DL3006
 FROM dimo414/base
 
 # Lua
-RUN apt-get update && apt-get install -y \
+# hadolint ignore=DL3003
+RUN apt-get update && apt-get install -y --no-install-recommends \
     gcc \
     lua5.2 \
     liblua5.2-dev \
     make \
     unzip && \
+  apt-get clean && rm -rf /var/lib/apt/lists/* && \
   cd /tmp && \
   wget http://luarocks.github.io/luarocks/releases/luarocks-2.4.3.tar.gz && \
   tar -xf luarocks-2.4.3.tar.gz && \
@@ -18,18 +21,18 @@ RUN apt-get update && apt-get install -y \
 
 # OCaml
 # NOTE you must currently preface every OCaml invocation with `eval $(opam config env)`
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     m4 \
     opam && \
+  apt-get clean && rm -rf /var/lib/apt/lists/* && \
   opam init -y && \
   opam switch 4.05.0 && \
-  eval $(opam config env) && \
+  eval "$(opam config env)" && \
   opam install core menhir utop ocp-indent user-setup -y && \
   wget -O "solution.byte" "https://drive.google.com/uc?export=download&id=0B1kqaYwK09xsdTc0WnBQMEYxdXc"
 
 # Rust
 # Referenced https://github.com/rust-lang-nursery/docker-rust/blob/master/1.21.0/jessie/Dockerfile
-
 ENV RUSTUP_HOME=/usr/local/rustup \
     CARGO_HOME=/usr/local/cargo \
     PATH=/usr/local/cargo/bin:$PATH

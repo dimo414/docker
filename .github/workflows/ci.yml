@@ -11,4 +11,6 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: hadolint
-      run: sh -c 'hadolint */Dockerfile'
+      # DL3008 - don't pin versions in apt-get
+      # DL4006 - don't use set -o pipefail
+      run: sh -c 'hadolint --ignore DL3008 --ignore DL4006 */Dockerfile'
