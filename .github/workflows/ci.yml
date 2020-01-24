@@ -1,0 +1,14 @@
+name: CI
+
+on: [push]
+
+jobs:
+  # https://stackoverflow.com/q/28182047/113632
+  hadolint:
+    runs-on: ubuntu-latest
+    container: hadolint/hadolint
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: hadolint
+      run: sh -c 'hadolint */Dockerfile'
