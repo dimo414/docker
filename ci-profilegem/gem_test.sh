@@ -13,6 +13,7 @@ step "Bash Version: $BASH_VERSION"
 
 step "Cloning ProfileGem"
 
+# TODO swap to GitHub
 run hg clone https://bitbucket.org/dimo414/profilegem "$PGEM_DIR"
 
 step "Cloning Gems"
@@ -20,9 +21,14 @@ step "Cloning Gems"
 gems=()
 
 for src in "$@"; do
-  gem=$(basename "$src" | sed -e 's/^.$/'"${BITBUCKET_REPO_SLUG:-under-test}"'/' -e 's/.gem$//')
-  run hg clone "$src" "$PGEM_DIR/${gem}.gem"
-  gems+=("$gem")
+  src=$(readlink -f "$src" || echo "$src")
+  gem=$(basename "$src")
+  if [[ "$src" =~ git ]] || [[ -d "$src/.git" ]]; then
+    run git clone "$src" "${PGEM_DIR}/${gem}"
+  else
+    run hg clone "$src" "${PGEM_DIR}/${gem}"
+  fi
+  gems+=("${gem%.gem}")
 done
 
 step "Creating Empty Gem"

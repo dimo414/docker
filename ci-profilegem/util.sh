@@ -36,7 +36,7 @@ powerset() {
         subset+=("${!j}")
       fi
     done
-    echo "${subset[@]}"
+    echo "${subset[*]}"
   done
 }
 
