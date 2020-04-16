@@ -1,5 +1,11 @@
 # Stanford CS140 - Operating Systems
 
+[
+![Docker Build Status](https://img.shields.io/docker/build/dimo414/cs140)
+![Docker Pulls](https://img.shields.io/docker/pulls/dimo414/cs140)
+![Docker Image Size](https://img.shields.io/docker/image-size/dimo414/cs140)
+](https://hub.docker.com/r/dimo414/cs140)
+
 Docker image that's able to build and test all the assignments for
 [CS140](http://cs140.stanford.edu) (Winter '18).
 

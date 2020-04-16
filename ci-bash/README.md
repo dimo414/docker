@@ -1,5 +1,11 @@
 # Bash Continuous Integration Image
 
+[
+![Docker Build Status](https://img.shields.io/docker/build/dimo414/ci-bash)
+![Docker Pulls](https://img.shields.io/docker/pulls/dimo414/ci-bash)
+![Docker Image Size](https://img.shields.io/docker/image-size/dimo414/ci-bash)
+](https://hub.docker.com/r/dimo414/ci-bash)
+
 This image enables testing of Bash scripts and related shell utilities.
 
 ## Features
