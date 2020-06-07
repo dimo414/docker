@@ -2,11 +2,11 @@
 FROM dimo414/base
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    mathpartir \
     texlive-fonts-recommended \
     texlive-latex-base \
     texlive-latex-extra \
-    texlive-latex-recommended && \
+    texlive-latex-recommended \
+    texlive-science && \
   apt-get clean && rm -rf /var/lib/apt/lists/*
 
 LABEL \
