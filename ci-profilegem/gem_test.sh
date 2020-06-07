@@ -13,8 +13,7 @@ step "Bash Version: $BASH_VERSION"
 
 step "Cloning ProfileGem"
 
-# TODO swap to GitHub
-run hg clone https://bitbucket.org/dimo414/profilegem "$PGEM_DIR"
+run git clone https://github.com/dimo414/ProfileGem "$PGEM_DIR"
 
 step "Cloning Gems"
 

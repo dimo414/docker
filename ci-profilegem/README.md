@@ -6,8 +6,10 @@
 ![Docker Image Size](https://img.shields.io/docker/image-size/dimo414/ci-profilegem)
 ](https://hub.docker.com/r/dimo414/ci-profilegem)
 
-This image enables testing of [ProfileGem](https://bitbucket.org/dimo414/profilegem) and custom
-gems.
+This image enables testing of [ProfileGem](https://github.com/dimo414/ProfileGem) and custom gems.
+
+**Note:** this image will likely be removed and the scripts listed below replaced with utilities
+in the ProfileGem repo itself.
 
 ## Features
 
