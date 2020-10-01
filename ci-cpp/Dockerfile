@@ -4,7 +4,7 @@ FROM dimo414/ci
 RUN \
   apt-get update && \
   apt-get install -y --no-install-recommends \
-    clang-tidy clang cppcheck python && \
+    clang-tidy clang cppcheck python2 && \
   apt-get clean && rm -rf /var/lib/apt/lists/*
 
 LABEL \
