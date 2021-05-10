@@ -1,7 +1,7 @@
 # Base Image
 
 [
-![Docker Build Status](https://img.shields.io/docker/build/dimo414/base)
+![Docker Build Status](https://img.shields.io/docker/cloud/build/dimo414/base)
 ![Docker Pulls](https://img.shields.io/docker/pulls/dimo414/base)
 ![Docker Image Size](https://img.shields.io/docker/image-size/dimo414/base)
 ](https://hub.docker.com/r/dimo414/base)

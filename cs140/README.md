@@ -1,7 +1,7 @@
 # Stanford CS140 - Operating Systems
 
 [
-![Docker Build Status](https://img.shields.io/docker/build/dimo414/cs140)
+![Docker Build Status](https://img.shields.io/docker/cloud/build/dimo414/cs140)
 ![Docker Pulls](https://img.shields.io/docker/pulls/dimo414/cs140)
 ![Docker Image Size](https://img.shields.io/docker/image-size/dimo414/cs140)
 ](https://hub.docker.com/r/dimo414/cs140)

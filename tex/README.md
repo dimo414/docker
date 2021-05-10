@@ -1,7 +1,7 @@
 # TeX
 
 [
-![Docker Build Status](https://img.shields.io/docker/build/dimo414/tex)
+![Docker Build Status](https://img.shields.io/docker/cloud/build/dimo414/tex)
 ![Docker Pulls](https://img.shields.io/docker/pulls/dimo414/tex)
 ![Docker Image Size](https://img.shields.io/docker/image-size/dimo414/tex)
 ](https://hub.docker.com/r/dimo414/tex)

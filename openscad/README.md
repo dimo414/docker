@@ -1,5 +1,11 @@
 # OpenSCAD Docker Image
 
+[
+![Docker Build Status](https://img.shields.io/docker/cloud/build/dimo414/openscad)
+![Docker Pulls](https://img.shields.io/docker/pulls/dimo414/openscad)
+![Docker Image Size](https://img.shields.io/docker/image-size/dimo414/openscad)
+](https://hub.docker.com/r/dimo414/openscad)
+
 Installs `openscad` and a few dependencies useful dependencies. Notably, `Xvfb` is installed to work around a
 [known limitation](https://github.com/openscad/openscad/issues/1798) that PNG generation requires a running X server.
 This is
