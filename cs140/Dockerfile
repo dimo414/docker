@@ -12,9 +12,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     qemu && \
   apt-get clean && rm -rf /var/lib/apt/lists/*
 
+# satisfy hadolint warning
+WORKDIR /
+
 COPY install-bochs.sh install-bochs.sh
 RUN ./install-bochs.sh
-
 
 LABEL \
   version="0.1" \

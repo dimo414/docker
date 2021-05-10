@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   && chmod +x /tini
 
 ENTRYPOINT ["/tini", "--"]
+CMD ["bash"]
 
 LABEL \
   version="0.1" \
