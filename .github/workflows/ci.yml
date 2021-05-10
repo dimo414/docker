@@ -6,7 +6,7 @@ jobs:
   # https://stackoverflow.com/q/28182047/113632
   hadolint:
     runs-on: ubuntu-latest
-    container: hadolint/hadolint
+    container: hadolint/hadolint:latest-debian # https://github.com/hadolint/hadolint/issues/611
 
     steps:
     - uses: actions/checkout@v1
