@@ -1,4 +1,5 @@
-FROM debian:stable-slim
+# debian:stable currently installs OpenSCAD 2015; testing has 2019
+FROM debian:testing-slim
 
 # Install https://github.com/krallin/tini manually so users don't need to remember to pass --init
 # to docker to get xvfb-run to work correctly.
