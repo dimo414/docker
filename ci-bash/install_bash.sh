@@ -1,29 +1,34 @@
 #!/bin/bash
 #
-# Downloads and installs the given version of Bash as `bash-n`
+# Downloads and installs the given version of Bash as `bash-x.y.z` (and `bash-x.y` and `bash-x`).
 # http://stackoverflow.com/a/41554230/113632
+# https://tiswww.case.edu/php/chet/bash/INSTALL
+
+# note minor==major if version doesn't have a patch, e.g. 5.0 instead of 5.0.0
+version=bash-${1:?version}
+minor=${version%.*}
+major=${minor%.*}
 
 # Example: http://ftp.gnu.org/gnu/bash/bash-4.4.18.tar.gz
-#BASH_FTP_URL='http://ftp.gnu.org/gnu/bash/%s.tar.gz'
-BASH_FTP_URL='http://ftpmirror.gnu.org/bash/%s.tar.gz'
+printf -v url 'http://ftpmirror.gnu.org/bash/%s.tar.gz' "$version"
 
-version=bash-${1:?version}
-cmd=${version%%.*}
-# shellcheck disable=SC2059
-printf -v url "$BASH_FTP_URL" "$version"
+src="/usr/local/src/${version}"
+build="/usr/local/build/${version}"
+bin="/usr/local/bin/${version}"
 
-# TODO clean up the source and build artifacts. Do we need anything other than the bash binary?
 (
   set -x
-  cd /usr/local/lib \
+  cd /usr/local/src \
     && wget "$url" \
     && tar xzf "${version}.tar.gz" \
-    && rm "${version}.tar.gz" \
-    && cd "$version" \
-    && ./configure && make \
-    && printf '#!/bin/sh\nPATH="%s:$PATH" exec %s "$@"\n' "$PWD" "$PWD/bash" > "/usr/local/bin/${cmd}" \
-    && chmod +x "/usr/local/bin/${cmd}" \
-    && "${cmd}" -version
+    && mkdir -p "${build}" && cd "${build}" \
+    && "${src}/configure" && make \
+    && rm -r "/usr/local/src/${version}"* \
+    && printf '#!/bin/sh\nexport PATH=%q":$PATH"\nexec %q "$@"\n' "${build}" "${build}/bash" > "${bin}" \
+    && chmod +x "${bin}" \
+    && cp "${bin}" "/usr/local/bin/${minor}" \
+    && cp "${bin}" "/usr/local/bin/${major}" \
+    && "${version}" -version
 ) || exit
 
-echo "${version} installed as ${cmd}"
+echo "${version} installed as ${version}, ${minor}, ${major}"
