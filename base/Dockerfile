@@ -17,11 +17,12 @@ RUN \
   apt-get update && apt-get install -y --no-install-recommends ca-certificates curl gnupg2 && \
   apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Bazel: https://docs.bazel.build/versions/master/install-ubuntu.html
+# Bazel: https://bazel.build/install/ubuntu
 # Java: https://wiki.debian.org/Java
 RUN \
-  echo "deb [arch=amd64] http://storage.googleapis.com/bazel-apt stable jdk1.8" | tee /etc/apt/sources.list.d/bazel.list && \
-  curl https://bazel.build/bazel-release.pub.gpg | APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=true apt-key add - && \
+  curl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor >bazel-archive-keyring.gpg && \
+  mv bazel-archive-keyring.gpg /usr/share/keyrings && \
+  echo "deb [arch=amd64 signed-by=/usr/share/keyrings/bazel-archive-keyring.gpg] https://storage.googleapis.com/bazel-apt stable jdk1.8" | tee /etc/apt/sources.list.d/bazel.list && \
   apt-get update && apt-get install -y --no-install-recommends \
     ant \
     bazel \
@@ -37,5 +38,5 @@ RUN \
 WORKDIR /dimo414
 
 LABEL \
-  version="0.3" \
+  version="0.4" \
   description="Base image that other images in this repo will build upon."
