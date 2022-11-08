@@ -24,4 +24,8 @@ jobs:
         with:
           context: "{{defaultContext}}:openscad"
           tags: ghcr.io/dimo414/openscad:latest
+          labels: |
+            org.opencontainers.image.title=OpenSCAD
+            org.opencontainers.image.source=https://github.com/dimo414/docker/tree/master/openscad
+            org.opencontainers.image.vendor=dimo414
           push: true
