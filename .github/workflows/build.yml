@@ -1,6 +1,21 @@
 name: Build
 
-on: [workflow_dispatch]
+on:
+  workflow_dispatch:
+    inputs:
+      package:
+        description: 'Name of the package / directory to build'
+        required: true
+        type: choice
+        options:
+          - openscad
+          - utf8
+      tag:
+        description: 'Package tag'
+        required: false
+        default: 'latest'
+        type: string
+
 
 jobs:
   build-and-push-image:
@@ -19,13 +34,12 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push Docker image
+      - name: Build and push Docker ${{ inputs.package }} image
         uses: docker/build-push-action@v3
         with:
-          context: "{{defaultContext}}:openscad"
-          tags: ghcr.io/dimo414/openscad:latest
+          context: "{{defaultContext}}:${{ inputs.package }} "
+          tags: ghcr.io/dimo414/${{ inputs.package }}:${{ inputs.tag }}
           labels: |
-            org.opencontainers.image.title=OpenSCAD
-            org.opencontainers.image.source=https://github.com/dimo414/docker/tree/master/openscad
+            org.opencontainers.image.source=https://github.com/dimo414/docker/tree/master/${{ inputs.package }}
             org.opencontainers.image.vendor=dimo414
           push: true
