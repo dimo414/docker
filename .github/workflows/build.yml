@@ -8,6 +8,7 @@ on:
         required: true
         type: choice
         options:
+          - bash-ci
           - openscad
           - utf8
       tag:
